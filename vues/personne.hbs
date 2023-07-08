@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/public/js/personneclientside.js" defer></script>
+    <link rel="stylesheet" href="/public/css/mystyle.css">
+    <title>Personnes</title>
+</head>
+
+<body>
+<div class="contenu">
+        <div class="menu">
+            <ul>
+                <li><a href="/" class="button">Accueuil</a></li>
+                <li><a class="button" href="/seminaire">Seminaires</a></li>
+                <li><a class="button" href="/personne">Personnes</a></li>
+                <li><a class="button" href="/animation">Animations</a></li>
+            </ul>
+        </div>
+        <div class="conteneur">
+        <fieldset class="formulaire">
+            <legend><b>Ajouter, Modifier ou Supprimer une Personne</b></legend>
+            <form action="/personne" method="post">
+                <input type="hidden" name="id" id="id" value="{{initialData.id}}">
+                <input type="text" name="nom" id="nom" placeholder="nom" required value="{{initialData.nom}}"><br>
+                <input type="text" name="prenom" id="prenom" placeholder="prénom" value="{{initialData.prenom}}"><br>
+                <button class="button" type="submit" id="ajouter">Ajouter</button>
+                <button class="button" type="reset">Reset</button>
+                <a href="" class="button" id="modifier">Modifier</a>
+                <a class="button" id="supprimer" href="">Supprimer</a>
+            </form>
+        </fieldset>
+        <div class="donnee">
+            <table id="data">
+                <thead>
+                    <tr>
+                        <td class="tablehead">Nom</td>
+                        <td class="tablehead">Prenom</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each personne}}
+                    <tr>
+                        <td class="tabledata" hidden>{{this.id_personne}}</td>
+                        <td class="tabledata">{{this.nom_personne}}</td>
+                        <td class="tabledata">{{this.prenom_personne}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

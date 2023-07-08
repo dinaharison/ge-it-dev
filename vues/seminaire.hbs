@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/public/js/seminaireclientside.js" defer></script>
+    <link rel="stylesheet" href="/public/css/mystyle.css">
+    <title>Seminaires</title>
+</head>
+
+<body>
+<div class="contenu">
+        <div class="menu">
+            <ul>
+                <li><a href="/" class="button">Accueuil</a></li>
+                <li><a class="button" href="/seminaire">Seminaires</a></li>
+                <li><a class="button" href="/personne">Personnes</a></li>
+                <li><a class="button" href="/animation">Animations</a></li>
+            </ul>
+        </div>
+        <div class="conteneur">
+        <fieldset class="formulaire">
+            <legend><b>Ajouter, Modifier ou Supprimer un Séminaire</b></legend>
+            <form action="/seminaire" method="post">
+                <input type="hidden" name="id" id="id" value="{{initialData.id}}">
+                <input type="text" name="nom" id="nom" placeholder="nom du séminaire" required value="{{initialData.nom}}"><br>
+                <div class="box">
+                 <select name="responsable" id="responsable" value="{{initialData.resp}}">
+                    {{#each personne}}
+                    <option value="{{this.id_personne}}">{{this.nom_personne}} {{this.prenom_personne}}</option>
+                    {{/each}}
+                </select>
+                </div>
+                <button class="button" type="submit" id="ajouter">Ajouter</button>
+                <button class="button" type="reset">Reset</button>
+                <a href="/seminaire/:id/:nom/:resp" class="button" id="modifier">Modifier</a>
+                <a class="button" id="supprimer" href="">Supprimer</a>
+            </form>
+        </fieldset>
+        <div class="donnee">
+            <table id="data">
+                <thead>
+                    <tr>
+                        <td class="tablehead">Nom</td>
+                        <td class="tablehead">Responsable</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td class="tabledata" hidden>{{this.id_seminaire}}</td>
+                        <td class="tabledata">{{this.nom_seminaire}}</td>
+                        <td class="tabledata">{{this.nom_personne}} {{this.prenom_personne}}</td>
+                        <td hidden class="tabledata">{{this.id_personne}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

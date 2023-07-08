@@ -1,0 +1,185 @@
+/* applique une couleur de fond sur tout le document*/
+html {
+  background-color: rgb(34, 34, 36);
+}
+
+/* applique la police sur tout le document*/
+html *{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: antiquewhite;
+  font-size: 1.0rem;
+}
+
+/* Style du scrollbar ;) */
+html::-webkit-scrollbar,
+::-webkit-scrollbar{
+  background: rgb(75, 75, 78);
+  width:5px;
+}
+
+/* Style du scrollbar. 
+Représente le fond vide ;) */
+html::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track {
+  background: rgb(116, 115, 115);
+}
+
+/* Style du scrollbar.
+Représente la barre;) */
+html::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb {
+  
+  background: rgb(75, 75, 78);
+}
+
+/* Style des élément select input et les liens avec classe "button"*/
+.box select,
+input,
+.button {
+  background-color: rgba(36, 34, 34, 0.877);
+  color: antiquewhite;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  box-shadow: 0 2px 2px rgba(99, 97, 97, 0.185);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.titre{
+  font-size: 2em;
+  text-align: center;
+}
+
+/* applique le style sur un élément avec la classe "button"
+lorsque la souris le traverse*/
+.button:hover {
+  background-color: rgba(36, 34, 34, 0.5);
+}
+
+/*applique un style sur le placeholder des éléments input*/
+::-webkit-input-placeholder {
+  color: rgb(197, 192, 192);
+}
+
+a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+.button {
+  width: 10rem;
+}
+
+/*Applique un style sur la div de l'élement select 
+  lorsqu'elle est traversée par la souris et
+  lorsque la liste déroulente est affichée
+*/
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(36, 34, 34);
+}
+
+/*
+  crée un layout de type grid
+  veuillez vous référer aux documentations
+  officielles pour les propriétés
+*/
+.contenu {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 2.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: column;
+  grid-template-areas:
+    "."
+    ".";
+}
+/*
+  crée un style pour le menu tout en haut de la page
+  c'est un layout de type flexbox alignant chaque
+  élément contenu dans la div horizontalement et les placent au milieu
+*/
+.menu {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(65, 67, 68, 0.25);
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+/*les éléments de la liste contenue dans la classe menu 
+se comportent comme des éléments inline tout en gardant 
+les propriétés des éléments de type block
+*/
+.menu>ul>li{
+  display: inline-block;
+}
+
+
+/*
+Classe de la table contenant les données
+overflow permet d'afficher la scrollbar
+*/
+.donnee {
+  height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+/*
+classe de l'élément fieldset contenant le formulaire
+utilise un layout flexbox
+*/
+.formulaire {
+  background-color: rgb(65, 67, 68, 0.25);
+  width: auto;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-left: 15%;
+  margin-right: 15%;
+  border: none;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: separate;
+}
+
+/* permet à l'entète de la table
+de se coller en haut lors d'un scrolling
+toutefois la taille de la div contenant la table
+doit être fixée pour que cela soit possible
+*/
+table thead {
+  top: 0;
+  position: sticky;
+  background-color: rgba(34, 34, 36);
+}
+
+.tabledata{
+  padding: 0.5rem;
+}
+
+
+.tablehead{
+  border: 1px antiquewhite solid;
+  padding: 0.5rem;
+}
+
+/*applique le style lorsque les lignes du tbody est traversée par la souris*/
+table>tbody>tr:hover{
+  background-color: rgba(71, 71, 73, 0.568);
+  border: 1px antiquewhite solid;
+}

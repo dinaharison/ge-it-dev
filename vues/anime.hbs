@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/public/js/animeclientside.js" defer></script>
+    <link rel="stylesheet" href="/public/css/mystyle.css">
+    <title>Animations</title>
+</head>
+
+<body>
+<div class="contenu">
+        <div class="menu">
+            <ul>
+                <li><a href="/" class="button">Accueuil</a></li>
+                <li><a class="button" href="/seminaire">Seminaires</a></li>
+                <li><a class="button" href="/personne">Personnes</a></li>
+                <li><a class="button" href="/animation">Animations</a></li>
+            </ul>
+        </div>
+        <div class="conteneur">
+        <fieldset class="formulaire">
+            <legend><b>Ajouter, Modifier ou Supprimer une Animation</b></legend>
+            <form action="/animation" method="post">
+                <div class="box">
+                    <select name="sem" id="sem" value="{{initialData.idSem}}">
+                        {{#each seminaire}}
+                        <option value="{{this.id_seminaire}}">{{this.nom_seminaire}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="box">
+                 <select name="anim" id="anim" value="{{initialData.idPers}}">
+                    {{#each personne}}
+                    <option value="{{this.id_personne}}">{{this.nom_personne}} {{this.prenom_personne}}</option>
+                    {{/each}}
+                </select>
+                <input type="text" name="salaire" id="salaire" value="{{inidialData.salaire}}" placeholder="Salaire" required>
+                <input type="date" name="datesem" id="datesem" value="{{inidialData.datesem}}" required>
+                </div>
+                <button class="button" type="submit" id="ajouter">Ajouter</button>
+                <button class="button" type="reset">Reset</button>
+                <a href="" class="button" id="modifier">Modifier</a>
+                <a class="button" id="supprimer" href="">Supprimer</a>
+            </form>
+        </fieldset>
+        <div class="donnee">
+            <table id="data">
+                <thead>
+                    <tr>
+                        <td class="tablehead">Séminaire</td>
+                        <td class="tablehead">Responsable</td>
+                        <td class="tablehead">Date</td>
+                        <td class="tablehead">Animateur</td>
+                        <td class="tablehead">Salaire in €</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td  hidden>{{this.id_sem}}</td>
+                        <td  hidden>{{this.id_pers}}</td>
+                        <td  hidden>{{this.id_resp}}</td>
+                        <td class="tabledata" >{{this.nom_sem}}</td>
+                        <td class="tabledata" >{{this.nom_resp}}  {{this.prenom_resp}}</td>
+                        <td class="tabledata" >{{this.date}}</td>
+                        <td class="tabledata" >{{this.nom_anim}}  {{this.prenom_anim}}</td>
+                        <td class="tabledata" >{{this.salaire}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
